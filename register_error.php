@@ -1,5 +1,6 @@
 <!--author Jin He -->
 
+
 <div class="tit">Register</div>    
 <hr>
 
@@ -19,10 +20,12 @@ password:<br>
 <input id="upload" type="password" name="manu"> <br>
 <input id="upload" type="submit" value="submit">
 <input id="upload" type="reset" value="clear">
+
+
 </form>
 </div>
 
-<img src="./images/badpassword.png">
 
+<p>Either Username or Password is wrong, Please relogin, user the correct information.</p>
 
 
