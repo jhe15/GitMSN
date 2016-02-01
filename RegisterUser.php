@@ -4,33 +4,31 @@
     
     $conn = mysqli_connect($server, $user, $pass, $dbname, $port)
     or die('Error connecting to MySQL server.');
-    
-    $tbl_name="members"; // Table name
+    Location:register_error
+    $tbl_name=“chatdata”; // Table name
     $state = $_POST['state'];
     $manu= $_POST['manu'];
-
     if (empty($state)){
         
-        header("location:../../index.php?page=register_error");
+        header("Location:register_error");
         exit();
     }
     if(empty($manu)){
-       header("location:../../index.php?page=register_error"); 
+       header("Location:register_error"); 
         exit();
     } 
     if (empty($state) && empty($manu)){
-        header("location:../../index.php?page=register_error");
+        header("Location:register_error");
         exit();
     } 
     
     //This is the query for check the user is exits or not
     $query2 = "SELECT * FROM $tbl_name WHERE username='$state'";
-
     //connect "select" query to database table
     
     $result2 = mysqli_query($conn, $query2);
     if (!result2) {
-		header("location:../../index.php?page=register_error_error");
+		header("Location:register_error");
 		exit();		
 	}
    
@@ -45,13 +43,13 @@
         $query= "INSERT INTO `members` VALUES (null,'$state', '$manu')";
         $result1 = mysqli_query($conn, $query);
 		if (!result1) {
-			header("location:../../index.php?page=register_error");
+			header("Location:register_error");
 			exit();		
 		}        
         $count1=mysqli_num_rows($result1);
       
         if($count1==0){
-     		header("location:../../index.php?page=login");
+     		header(“Location:index.php”);
         }
     }
     //if the count row number of this user more than 0,
@@ -59,7 +57,7 @@
     //edirect to next page
    
     else if($count>0){
-        header("location:../../index.php?page=register_error");
+        header("Location:register_error");
     }
     
     ob_end_flush();
@@ -67,7 +65,6 @@
     mysqli_close($conn);
     
 ?>
-
 
 
 
